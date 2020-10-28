@@ -84,8 +84,6 @@ class student:
             a += self.grades[i]
             i += 1
         average=a/num
-        average=str(average)
-        print("average= "+average)
         return average
 
     def showGrades(self,index):

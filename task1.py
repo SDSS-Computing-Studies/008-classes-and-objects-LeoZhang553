@@ -33,10 +33,11 @@ class student:
         # You will need to create your own input parameters for all methods
         self.name=name
         self.number=number
-        self.grade=grade
+        self.grade=str(grade)
 
         print('Student name is '+self.name)
         print('His/her student number is '+self.number)
+        print("He/She is in grade "+ self.grade)
 
     def inputCourses(self):
 
@@ -44,13 +45,13 @@ class student:
         print("===============================================")
 
         course=[]
-        i=0
 
-        while i<7:
+        while True:
             a=input("course = ")
             if a != "0":
                 course.append(a)
-            i+=1
+            if a == '0':
+                break
 
         return course
 
@@ -74,36 +75,35 @@ class student:
     def getGrades(self,grades):
         self.grades=grades
 
-    def average(self,grades):
-        num=len(grades)
+    def average(self):
+        num=len(self.grades)
         num=int(num)
         i=0
         a=0
         while i<num:
-            a += grades[i]
+            a += self.grades[i]
             i += 1
         average=a/num
         average=str(average)
         print("average= "+average)
         return average
 
-    def getHonorRoll(self,grades):
-        grades.sort()
-        ave5=(grades[-1]+grades[-2]+grades[-3]+grades[-4]+grades[-5])/5
+    def showGrades(self,index):
+        print(self.course[index])
+        print(self.grades[index])
+
+    def showCourses(self):
+        print(self.course)
+
+    def getHonorRoll(self):
+        self.grades.sort()
+        ave5=(self.grades[-1]+self.grades[-2]+self.grades[-3]+self.grades[-4]+self.grades[-5])/5
         if ave5 >= 86:
             print("Honor Roll")
             return True
         else:
             return False
         
-    def showCourses(self,course):
-        print(course)
-
-    def showGrades(self,course,grades):
-        index=input("input an index: ")
-        index=int(index)
-        print(course[index])
-        print(grades[index])
 
     def __del__(self):
         print("END")
@@ -112,15 +112,21 @@ class student:
 def main():
     # This contains test data that will be used by the autograder.
     # do not modify this function
-
     st1 = student("Anita Bath","91334",11)
-    course=st1.inputCourses()
-    grades=st1.inputGrades(course)
-    st1.getCourses(course)
-    st1.getGrades(grades)
-    st1.average(grades)
-    st1.getHonorRoll(grades)
-    st1.showCourses(course)
-    st1.showGrades(course,grades)
+    st1.getCourses( ["English","Math","PE","Computers","History","Biology","Japanese"] )
+    st1.getGrades([ 91, 94, 87, 99, 82, 100, 73])
+    st1.average()
+    st1.showCourses()
+    st1.showGrades(3)
+    st1.getHonorRoll()
+
+
+    st2 = student("Joe Lunchbox","12346", 11)
+    st2.getCourses( ["English","Math","Physics","Computers","Geography","Chemistry","French"] )
+    st2.getGrades( [71, 98, 93, 95, 68, 81, 71])
+    st2.average()
+    st2.showCourses()
+    st2.showGrades(3)
+    st2.getHonorRoll()
 
 main()

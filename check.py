@@ -34,3 +34,13 @@
             course.append(a8)
 
         return course
+
+            st1 = student("Anita Bath","91334",11)
+    course=st1.inputCourses()
+    grades=st1.inputGrades(course)
+    st1.getCourses(course)
+    st1.getGrades(grades)
+    st1.average(grades)
+    st1.getHonorRoll(grades)
+    st1.showCourses(course)
+    st1.showGrades(course,grades)
